@@ -9,7 +9,7 @@ import lombok.AllArgsConstructor;
 
 @Service
 @AllArgsConstructor
-public class CozinhaService {
+public class CadastroCozinhaService {
 
 	private final CozinhaRepository cozinhaRepository;
 	
