@@ -1,5 +1,7 @@
 package com.algaworks.algafood.api.controller;
 
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +32,10 @@ public class CozinhaController {
 
 	private final CadastroCozinhaService cadastroCozinha;
 
+	@GetMapping
+	public List<Cozinha> listar() {
+		return cozinhaRepository.listar();
+	}
 
 	@GetMapping("/{cozinhaId}")
 	public ResponseEntity<Cozinha> buscar(@PathVariable Long cozinhaId) {
@@ -40,7 +46,6 @@ public class CozinhaController {
 		}
 
 		return ResponseEntity.notFound().build();
-
 	}
 
 	@PostMapping
@@ -67,7 +72,6 @@ public class CozinhaController {
 	public ResponseEntity<Cozinha> remover(@PathVariable Long cozinhaId) {
 		try {
 			cadastroCozinha.excluir(cozinhaId);
-
 			return ResponseEntity.noContent().build();
 
 		} catch (EntidadeNaoEncontradaException e) {
